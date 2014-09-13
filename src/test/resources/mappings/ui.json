@@ -1,0 +1,12 @@
+{
+    "request": {
+        "method": "PUT",
+        "urlPattern": "/ui/loanApplication/[0-9]+"
+    },
+    "response": {
+        "status": 200,
+        "headers": {
+            "Content-Type": "application/vnd.pl.warsjawa.ui.v1+json"
+        }
+    }
+}

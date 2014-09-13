@@ -1,0 +1,8 @@
+{
+    "europe": {
+        "this": "pl/warsjawa/loan-application-decision-maker",
+        "dependencies": {
+            "ui" : "pl/warsjawa/ui"
+        }
+    }
+}
