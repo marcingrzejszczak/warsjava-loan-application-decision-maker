@@ -1,4 +1,4 @@
-package pl.warsjawa.fraud
+package pl.warsjawa.decisionmaker
 
 import pl.warsjawa.base.MicroserviceMvcWiremockSpec
 import spock.lang.Unroll
