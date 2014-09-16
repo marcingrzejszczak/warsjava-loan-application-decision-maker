@@ -2,7 +2,7 @@ package pl.warsjawa.decisionmaker
 
 
 public enum Dependencies {
-    UI
+    MARKETING
 
     @Override
     String toString() {
