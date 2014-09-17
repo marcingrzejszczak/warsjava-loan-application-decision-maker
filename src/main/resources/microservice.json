@@ -2,7 +2,8 @@
     "europe": {
         "this": "pl/warsjawa/loan-application-decision-maker",
         "dependencies": {
-            "marketing" : "pl/warsjawa/marketing"
+            "marketing" : "pl/warsjawa/marketing",
+            "reporting" : "pl/warsjawa/reporting"
         }
     }
 }
