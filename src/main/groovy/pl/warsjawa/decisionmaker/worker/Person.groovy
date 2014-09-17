@@ -1,11 +1,11 @@
 package pl.warsjawa.decisionmaker.worker
 
-class Person {
-    final String firstName
-    final String lastName
+import groovy.transform.CompileStatic
+import groovy.transform.Immutable
 
-    Person(String firstName, String lastName) {
-        this.firstName = firstName
-        this.lastName = lastName
-    }
+@CompileStatic
+@Immutable
+class Person {
+    String firstName
+    String lastName
 }
