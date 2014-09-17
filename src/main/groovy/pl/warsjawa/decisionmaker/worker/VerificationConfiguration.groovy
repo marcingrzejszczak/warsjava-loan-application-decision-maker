@@ -11,6 +11,6 @@ class VerificationConfiguration {
 
     @Bean
     PropagationWorker propagationWorker(ServiceRestClient serviceRestClient) {
-        return new DecisionMakerWorker(serviceRestClient)
+        return new DecisionMakerWorker(serviceRestClient, new DecisionMaker(), new RequestBodyBuilder())
     }
 }
