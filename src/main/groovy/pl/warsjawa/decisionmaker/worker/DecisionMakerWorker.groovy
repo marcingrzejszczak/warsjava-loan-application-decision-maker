@@ -6,7 +6,7 @@ import groovy.transform.PackageScope
 import groovy.util.logging.Slf4j
 import pl.warsjawa.decisionmaker.Dependencies
 
-import static pl.warsjawa.decisionmaker.DecisionMakerApi.MARKETING_MAKER_V1
+import static pl.warsjawa.decisionmaker.DecisionMakerApi.*
 
 @CompileStatic
 @Slf4j
@@ -34,6 +34,16 @@ class DecisionMakerWorker implements PropagationWorker {
             .body(requestBodyBuilder.buildMarketingRequestBody(decision))
             .withHeaders()
                 .contentType(MARKETING_MAKER_V1)
+            .andExecuteFor()
+            .ignoringResponse()
+
+        log.info("Sending a request to [$Dependencies.REPORTING] to save loan application for reporting purposes")
+        serviceRestClient.forService(Dependencies.REPORTING.toString())
+            .put()
+            .onUrl("/api/reporting/$loanApplicationId")
+            .body(requestBodyBuilder.buildReportingRequestBody(decision))
+            .withHeaders()
+                .contentType(REPORTING_MAKER_V1)
             .andExecuteFor()
             .ignoringResponse()
     }

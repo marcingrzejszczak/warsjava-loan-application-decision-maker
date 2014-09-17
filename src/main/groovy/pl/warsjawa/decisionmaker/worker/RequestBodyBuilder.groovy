@@ -1,5 +1,6 @@
 package pl.warsjawa.decisionmaker.worker
 
+import groovy.json.JsonOutput
 import groovy.util.logging.Slf4j
 
 @Slf4j
@@ -16,6 +17,10 @@ class RequestBodyBuilder {
         }
 
         return builder.toString()
+    }
+
+    String buildReportingRequestBody(DecisionData data) {
+        return JsonOutput.toJson(data)
     }
 
 }

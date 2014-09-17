@@ -13,4 +13,7 @@ public class DecisionMakerApi {
 
     public static final String MARKETING_MAKER_NAME = "vnd.pl.warsjawa.marketing";
     public static final String MARKETING_MAKER_V1 = APPLICATION +  "/" + MARKETING_MAKER_NAME + JSON_V1;
+
+    public static final String REPORTING_MAKER_NAME = "vnd.pl.warsjawa.reporting";
+    public static final String REPORTING_MAKER_V1 = APPLICATION +  "/" + REPORTING_MAKER_NAME + JSON_V1;
 }
