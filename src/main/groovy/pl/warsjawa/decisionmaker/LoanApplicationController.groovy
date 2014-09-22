@@ -6,7 +6,6 @@ import groovy.transform.CompileStatic
 import groovy.util.logging.Slf4j
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.*
-import pl.warsjawa.decisionmaker.repository.DecisionRepository
 import pl.warsjawa.decisionmaker.worker.PropagationWorker
 
 import javax.validation.constraints.NotNull
@@ -37,7 +36,7 @@ class LoanApplicationController {
             notes = "This will asynchronously verify whether the user can get a loan")
     Callable<Void> decideOnLoanGranting(@PathVariable @NotNull String loanApplicationId, @RequestBody @NotNull String loanApplicationDetails) {
         return {
-            propagationWorker.checkAndPropagate(loanApplicationId, loanApplicationDetails)
+            propagationWorker.makeDecisionAndPropagate(loanApplicationId, loanApplicationDetails)
         }
     }
 }
