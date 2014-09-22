@@ -18,12 +18,12 @@ import static DecisionMakerApi.*
 @RestController
 @RequestMapping(API_URL)
 @Api(value = "loanApplication", description = "Decides whether to grant loan or not")
-class LoanApplicationController {
+class DecisionController {
 
     private final PropagationWorker propagationWorker
 
     @Autowired
-    LoanApplicationController(PropagationWorker propagationWorker) {
+    DecisionController(PropagationWorker propagationWorker) {
         this.propagationWorker = propagationWorker
     }
 
