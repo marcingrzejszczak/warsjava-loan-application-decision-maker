@@ -1,9 +1,10 @@
 package pl.warsjawa.decisionmaker.worker
 
 import groovy.json.JsonOutput
-import groovy.util.logging.Slf4j
+import groovy.transform.PackageScope
+import pl.warsjawa.decisionmaker.domain.DecisionData
 
-@Slf4j
+@PackageScope
 class RequestBodyBuilder {
 
     String buildMarketingRequestBody(DecisionData data) {
