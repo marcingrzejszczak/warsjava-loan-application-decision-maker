@@ -4,8 +4,8 @@ import groovy.json.JsonOutput
 import groovy.transform.PackageScope
 import pl.warsjawa.decisionmaker.domain.Decision
 
-//@PackageScope
-public class RequestBodyBuilder {
+@PackageScope
+class RequestBodyBuilder {
 
     String buildMarketingRequestBody(Decision data) {
         def builder = new groovy.json.JsonBuilder()
