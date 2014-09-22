@@ -1,6 +1,5 @@
 package pl.warsjawa.decisionmaker.worker
 
-import groovy.json.JsonOutput
 import groovy.transform.PackageScope
 import pl.warsjawa.decisionmaker.domain.Decision
 
