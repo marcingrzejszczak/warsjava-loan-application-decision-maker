@@ -7,7 +7,7 @@ import org.springframework.context.annotation.Configuration
 
 @Configuration
 @CompileStatic
-class VerificationConfiguration {
+class DecisionConfiguration {
 
     @Bean
     FlowPropagator flowPropagator(ServiceRestClient serviceRestClient) {
