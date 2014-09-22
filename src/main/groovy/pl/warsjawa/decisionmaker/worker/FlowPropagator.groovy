@@ -13,13 +13,11 @@ import static pl.warsjawa.decisionmaker.DecisionMakerApi.REPORTING_MAKER_V1
 
 @Slf4j
 @TypeChecked
-@Service
 class FlowPropagator {
 
     private final ServiceRestClient serviceRestClient
     private final RequestBodyBuilder requestBodyBuilder
 
-    @Autowired
     FlowPropagator(ServiceRestClient serviceRestClient, RequestBodyBuilder requestBodyBuilder) {
         this.serviceRestClient = serviceRestClient
         this.requestBodyBuilder = requestBodyBuilder
