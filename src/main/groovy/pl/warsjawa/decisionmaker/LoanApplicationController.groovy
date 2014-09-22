@@ -6,6 +6,7 @@ import groovy.transform.CompileStatic
 import groovy.util.logging.Slf4j
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.*
+import pl.warsjawa.decisionmaker.repository.DecisionRepository
 import pl.warsjawa.decisionmaker.worker.PropagationWorker
 
 import javax.validation.constraints.NotNull

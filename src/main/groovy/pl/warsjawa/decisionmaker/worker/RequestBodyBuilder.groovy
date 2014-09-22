@@ -2,26 +2,38 @@ package pl.warsjawa.decisionmaker.worker
 
 import groovy.json.JsonOutput
 import groovy.transform.PackageScope
-import pl.warsjawa.decisionmaker.domain.DecisionData
+import pl.warsjawa.decisionmaker.domain.Decision
 
-@PackageScope
-class RequestBodyBuilder {
+//@PackageScope
+public class RequestBodyBuilder {
 
-    String buildMarketingRequestBody(DecisionData data) {
+    String buildMarketingRequestBody(Decision data) {
         def builder = new groovy.json.JsonBuilder()
         builder {
-            decision data.decision
+            decision data.decision,
             person(
-                    firstName: data.person.firstName,
-                    lastName: data.person.lastName
+                    firstName: data.firstName,
+                    lastName: data.lastName
             )
         }
 
         return builder.toString()
     }
 
-    String buildReportingRequestBody(DecisionData data) {
-        return JsonOutput.toJson(data)
+    String buildReportingRequestBody(Decision data) {
+        def builder = new groovy.json.JsonBuilder()
+        builder {
+            decision data.decision,
+            fraudStatus: data.fraudStatus,
+            job: data.job,
+            amount: data.amount,
+            person(
+                    firstName: data.firstName,
+                    lastName: data.lastName
+            )
+        }
+
+        return builder.toString()
     }
 
 }

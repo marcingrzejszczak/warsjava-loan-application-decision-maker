@@ -8,6 +8,7 @@ build
 .classpath
 commitHash.txt
 logs
+target
 .log
 .zip
 /out

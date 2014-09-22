@@ -5,6 +5,8 @@ import groovy.transform.CompileStatic
 import groovy.transform.PackageScope
 import groovy.util.logging.Slf4j
 import pl.warsjawa.decisionmaker.Dependencies
+import pl.warsjawa.decisionmaker.domain.Decision
+import pl.warsjawa.decisionmaker.repository.DecisionRepository
 
 import static pl.warsjawa.decisionmaker.DecisionMakerApi.*
 
@@ -16,8 +18,13 @@ class DecisionMakerWorker implements PropagationWorker {
     private final ServiceRestClient serviceRestClient
     private final DecisionMaker decisionMaker
     private final RequestBodyBuilder requestBodyBuilder
+    private final DecisionRepository decisionRepository
 
-    DecisionMakerWorker(ServiceRestClient serviceRestClient, DecisionMaker decisionMaker, RequestBodyBuilder requestBodyBuilder) {
+    DecisionMakerWorker(ServiceRestClient serviceRestClient,
+                        DecisionMaker decisionMaker,
+                        DecisionRepository decisionRepository,
+                        RequestBodyBuilder requestBodyBuilder) {
+        this.decisionRepository = decisionRepository
         this.serviceRestClient = serviceRestClient
         this.decisionMaker = decisionMaker
         this.requestBodyBuilder = requestBodyBuilder
@@ -25,7 +32,8 @@ class DecisionMakerWorker implements PropagationWorker {
 
     @Override
     void checkAndPropagate(String loanApplicationId, String loanApplicationDetails) {
-        DecisionData decision = decisionMaker.makeLoanDecision(loanApplicationDetails)
+        Decision decision = decisionMaker.makeLoanDecision(loanApplicationId, loanApplicationDetails)
+        decisionRepository.saveDecision(decision)
 
         log.info("Sending a request to [$Dependencies.MARKETING] to create additional offer")
         serviceRestClient.forService(Dependencies.MARKETING.toString())
