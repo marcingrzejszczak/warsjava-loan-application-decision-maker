@@ -9,7 +9,7 @@ class RequestBodyBuilder {
     String buildMarketingRequestBody(Decision data) {
         def builder = new groovy.json.JsonBuilder()
         builder {
-            decision data.decision,
+            decision data.decision
             person(
                     firstName: data.firstName,
                     lastName: data.lastName
@@ -22,10 +22,10 @@ class RequestBodyBuilder {
     String buildReportingRequestBody(Decision data) {
         def builder = new groovy.json.JsonBuilder()
         builder {
-            decision data.decision,
-            fraudStatus: data.fraudStatus,
-            job: data.job,
-            amount: data.amount,
+            decision data.decision
+            fraudStatus: data.fraudStatus
+            job: data.job
+            amount: data.amount
             person(
                     firstName: data.firstName,
                     lastName: data.lastName
