@@ -6,6 +6,8 @@ import groovy.transform.CompileStatic
 import groovy.util.logging.Slf4j
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.*
+import pl.warsjawa.decisionmaker.domain.Decision
+import pl.warsjawa.decisionmaker.repository.DecisionRepository
 import pl.warsjawa.decisionmaker.worker.PropagationWorker
 
 import javax.validation.constraints.NotNull
@@ -13,7 +15,6 @@ import java.util.concurrent.Callable
 
 import static DecisionMakerApi.*
 
-@CompileStatic
 @Slf4j
 @RestController
 @RequestMapping(API_URL)
@@ -21,9 +22,11 @@ import static DecisionMakerApi.*
 class DecisionController {
 
     private final PropagationWorker propagationWorker
+    private final DecisionRepository decisionRepository
 
     @Autowired
-    DecisionController(PropagationWorker propagationWorker) {
+    DecisionController(PropagationWorker propagationWorker, DecisionRepository decisionRepository) {
+        this.decisionRepository = decisionRepository
         this.propagationWorker = propagationWorker
     }
 
@@ -38,5 +41,29 @@ class DecisionController {
         return {
             propagationWorker.makeDecisionAndPropagate(loanApplicationId, loanApplicationDetails)
         }
+    }
+
+    @RequestMapping(
+            value = LOAN_APPLICATION_URL,
+            method = RequestMethod.GET,
+            consumes = API_VERSION_1,
+            produces = API_VERSION_1)
+    @ApiOperation(value = "Finds asynchronously decision of granting a loan",
+            notes = "This will asynchronously finds decision taken for the loan with given identifier")
+    Callable<String> getLoanDecision(@PathVariable @NotNull String loanApplicationid) {
+        return {
+            Decision foundDecision = decisionRepository.findById(loanApplicationid)
+            return prepareJsonResponse(foundDecision)
+        }
+    }
+
+    private String prepareJsonResponse(Decision foundDecision) {
+        def builder = new groovy.json.JsonBuilder()
+        builder {
+            loanApplicationId foundDecision.loanApplicationId
+            decision foundDecision.decision
+        }
+
+        return builder.toString()
     }
 }
