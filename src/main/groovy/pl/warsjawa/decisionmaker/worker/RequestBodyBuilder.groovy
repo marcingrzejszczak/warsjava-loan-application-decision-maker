@@ -22,14 +22,11 @@ class RequestBodyBuilder {
     String buildReportingRequestBody(Decision data) {
         def builder = new groovy.json.JsonBuilder()
         builder {
-            person(
-                    firstName: data.firstName,
-                    lastName: data.lastName,
-            )
             decision data.decision
             fraudStatus data.fraudStatus
             job data.job
             amount data.amount
+            loanId data.loanApplicationId
         }
 
         return builder.toString()
