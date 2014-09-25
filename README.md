@@ -1,6 +1,8 @@
 Loan application decision maker for Warsjava
 =======================
 
+## Description
+
 Example of a microservice that works on Spring Boot.
 
 ## Build status
