@@ -2,7 +2,6 @@ package pl.warsjawa.decisionmaker
 
 import com.wordnik.swagger.annotations.Api
 import com.wordnik.swagger.annotations.ApiOperation
-import groovy.transform.CompileStatic
 import groovy.util.logging.Slf4j
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.*
@@ -31,7 +30,7 @@ class DecisionController {
     }
 
     @RequestMapping(
-            value = LOAN_APPLICATION_URL,
+            value = DECISION_MAKER_URL,
             method = RequestMethod.PUT,
             consumes = API_VERSION_1,
             produces = API_VERSION_1)
@@ -44,7 +43,7 @@ class DecisionController {
     }
 
     @RequestMapping(
-            value = LOAN_APPLICATION_URL,
+            value = DECISION_MAKER_URL,
             method = RequestMethod.GET,
             consumes = API_VERSION_1,
             produces = API_VERSION_1)

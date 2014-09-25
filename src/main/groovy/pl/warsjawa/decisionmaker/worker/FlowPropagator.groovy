@@ -3,13 +3,11 @@ package pl.warsjawa.decisionmaker.worker
 import com.ofg.infrastructure.web.resttemplate.fluent.ServiceRestClient
 import groovy.transform.TypeChecked
 import groovy.util.logging.Slf4j
-import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.stereotype.Service
 import pl.warsjawa.decisionmaker.Dependencies
 import pl.warsjawa.decisionmaker.domain.Decision
 
-import static pl.warsjawa.decisionmaker.DecisionMakerApi.MARKETING_MAKER_V1
-import static pl.warsjawa.decisionmaker.DecisionMakerApi.REPORTING_MAKER_V1
+import static pl.warsjawa.decisionmaker.DecisionMakerApi.MARKETING_SRV_V1
+import static pl.warsjawa.decisionmaker.DecisionMakerApi.REPORTING_SRV_V1
 
 @Slf4j
 @TypeChecked
@@ -30,7 +28,7 @@ class FlowPropagator {
                 .onUrl("/api/marketing/$decision.loanApplicationId")
                 .body(requestBodyBuilder.buildMarketingRequestBody(decision))
                 .withHeaders()
-                .contentType(MARKETING_MAKER_V1)
+                .contentType(MARKETING_SRV_V1)
                 .andExecuteFor()
                 .ignoringResponse()
 
@@ -40,7 +38,7 @@ class FlowPropagator {
                 .onUrl("/loans")
                 .body(requestBodyBuilder.buildReportingRequestBody(decision))
                 .withHeaders()
-                .contentType(REPORTING_MAKER_V1)
+                .contentType(REPORTING_SRV_V1)
                 .andExecuteFor()
                 .ignoringResponse()
     }

@@ -8,12 +8,12 @@ public class DecisionMakerApi {
     public static final String APP_JSON_V1 = APP_NAME + JSON_V1;
 
     public static final String API_VERSION_1 = APPLICATION + "/" + APP_JSON_V1;
-    public static final String LOAN_APPLICATION_ROOT_URL = "loanApplication";
-    public static final String LOAN_APPLICATION_URL = LOAN_APPLICATION_ROOT_URL + "/{loanApplicationId}";
+    public static final String DECISION_MAKER_ROOT_URL = "loanApplication";
+    public static final String DECISION_MAKER_URL = DECISION_MAKER_ROOT_URL + "/{loanApplicationId}";
 
-    public static final String MARKETING_MAKER_NAME = "vnd.pl.warsjawa.marketing";
-    public static final String MARKETING_MAKER_V1 = APPLICATION +  "/" + MARKETING_MAKER_NAME + JSON_V1;
+    public static final String MARKETING_SRV_NAME = "vnd.pl.warsjawa.marketing";
+    public static final String MARKETING_SRV_V1 = APPLICATION +  "/" + MARKETING_SRV_NAME + JSON_V1;
 
-    public static final String REPORTING_MAKER_NAME = "vnd.pl.warsjawa.reporting";
-    public static final String REPORTING_MAKER_V1 = APPLICATION +  "/" + REPORTING_MAKER_NAME + JSON_V1;
+    public static final String REPORTING_SRV_NAME = "vnd.pl.warsjawa.reporting";
+    public static final String REPORTING_SRV_V1 = APPLICATION +  "/" + REPORTING_SRV_NAME + JSON_V1;
 }
