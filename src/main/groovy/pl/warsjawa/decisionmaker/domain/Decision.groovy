@@ -1,17 +1,14 @@
 package pl.warsjawa.decisionmaker.domain
 
 import groovy.transform.CompileStatic
-import groovy.transform.Immutable
 import groovy.transform.TypeChecked
-import org.springframework.data.cassandra.mapping.PrimaryKey
-import org.springframework.data.cassandra.mapping.Table
+import org.springframework.data.annotation.Id
 
 @CompileStatic
-@Table
 @TypeChecked
 class Decision {
-    @PrimaryKey
-    final String loanApplicationId
+
+    final @Id String loanApplicationId
     final String firstName, lastName, job, fraudStatus, decision
     final int amount
 
