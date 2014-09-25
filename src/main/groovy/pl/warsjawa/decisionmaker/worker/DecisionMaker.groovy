@@ -13,11 +13,9 @@ class DecisionMaker {
 
     Decision makeLoanDecision(String loanApplicationId, String loanApplicationDetails) {
         def root = new JsonSlurper().parseText(loanApplicationDetails)
-
         String fraudStatus = root.fraudStatus.toLowerCase()
-
         String decision = doMakeDecision(fraudStatus)
-        return new Decision(loanApplicationId, root.firstName, root.lastName, root.job, root.amount, fraudStatus, decision)
+        return new Decision(loanApplicationId, root.firstName, root.lastName, root.job, root.amount?.toInteger(), fraudStatus, decision)
     }
 
     private String doMakeDecision(fraudStatus) {
