@@ -1,5 +1,5 @@
 {
-    "europe": {
+    "test": {
         "this": "pl/warsjawa/loan-application-decision-maker",
         "dependencies": {
             "marketing" : "pl/warsjawa/marketing-service",
