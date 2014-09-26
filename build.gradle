@@ -97,6 +97,7 @@ dependencies {
 
     // microservices
     compile 'com.ofg:micro-infra-spring:0.3.0'
+    compile 'com.ofg:micro-infra-spring-swagger-ui:0.4.0'
 
     compile 'org.springframework.data:spring-data-mongodb:1.6.0.RELEASE'
     compile 'com.github.fakemongo:fongo:1.5.5'
