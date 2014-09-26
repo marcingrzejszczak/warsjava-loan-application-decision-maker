@@ -34,7 +34,7 @@ class FlowPropagator {
 
         log.info("Sending a request to [$Dependencies.REPORTING] to save loan application for reporting purposes")
         serviceRestClient.forService(Dependencies.REPORTING.toString())
-                .put()
+                .post()
                 .onUrl("/loans")
                 .body(requestBodyBuilder.buildReportingRequestBody(decision))
                 .withHeaders()
